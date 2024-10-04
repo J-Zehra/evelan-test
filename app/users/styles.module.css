@@ -84,3 +84,7 @@
 .button:hover {
   background: #10837b;
 }
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

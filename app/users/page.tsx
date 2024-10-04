@@ -39,8 +39,8 @@ export default function UsersPage() {
       <Users users={users} />
       <button
         disabled={loading || page === 2}
-        onClick={handleLoadMore}
         className={styles.button}
+        onClick={handleLoadMore}
         type="button"
       >
         More

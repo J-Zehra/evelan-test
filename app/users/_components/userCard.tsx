@@ -15,7 +15,6 @@ export default function UserCard({ user }: Props) {
           width={30}
           height={40}
           sizes="5rem"
-          priority={false}
           className={styles.avatar}
         />
         <h1 className={styles.user_id}>{user.id}</h1>
