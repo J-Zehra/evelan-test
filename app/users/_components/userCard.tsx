@@ -15,7 +15,6 @@ export default function UserCard({ user }: Props) {
           width={30}
           height={40}
           sizes="100vw"
-          loading="eager"
           priority={false}
           className={styles.avatar}
         />
