@@ -14,13 +14,14 @@ export default function UserCard({ user }: Props) {
           alt="User Avatar"
           width={100}
           height={500}
+          sizes="(max-width: 684px) 100vw, 684px"
           className={styles.avatar}
         />
         <h1 className={styles.user_id}>{user.id}</h1>
         <h3
           className={styles.user_name}
         >{`${user.first_name} ${user.last_name}`}</h3>
-        <h5 className={styles.user_email}>{user.email}</h5>
+        <p className={styles.user_email}>{user.email}</p>
       </article>
     </li>
   );

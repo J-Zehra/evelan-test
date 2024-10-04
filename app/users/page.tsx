@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Users from "./_components/users";
 
+const BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export default function UsersPage() {
   const [users, setUsers] = useState<UserType[]>([]);
   const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState(false);
 
   const handleLoadMore = () => {
     setPage((prev) => prev + 1);
@@ -15,13 +18,15 @@ export default function UsersPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetch(`https://reqres.in/api/users?page=${page}`);
+        setLoading(true);
+        const data = await fetch(`${BASE}/api/users?page=${page}`);
         const users = (await data.json()).data as UserType[];
 
         setUsers((prev) => [...prev, ...users]);
       } catch (error) {
         console.log(error);
       } finally {
+        setLoading(false);
       }
     };
 
@@ -32,7 +37,12 @@ export default function UsersPage() {
     <section className={styles.container}>
       <header className={styles.header}>Users</header>
       <Users users={users} />
-      <button onClick={handleLoadMore} className={styles.button} type="button">
+      <button
+        disabled={loading || page === 2}
+        onClick={handleLoadMore}
+        className={styles.button}
+        type="button"
+      >
         More
       </button>
     </section>
