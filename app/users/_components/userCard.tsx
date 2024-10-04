@@ -12,9 +12,10 @@ export default function UserCard({ user }: Props) {
         <Image
           src={user.avatar}
           alt="User Avatar"
-          width={50}
-          height={50}
-          sizes="(max-width: 130px) 100vw, 130px"
+          width={30}
+          height={40}
+          sizes="100vw"
+          loading="eager"
           priority={false}
           className={styles.avatar}
         />
