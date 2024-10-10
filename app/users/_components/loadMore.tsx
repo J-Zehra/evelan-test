@@ -2,16 +2,15 @@ import React from "react";
 import styles from "../styles.module.css";
 
 type Props = {
-  loading: boolean;
-  page: number;
   handleLoadMore: () => void;
+  page: number;
 };
 
-export default function LoadMore({ page, handleLoadMore, loading }: Props) {
+export default function LoadMore({ handleLoadMore, page }: Props) {
   return (
     <button
-      disabled={loading || page === 2}
       className={styles.button}
+      disabled={page === 2}
       onClick={handleLoadMore}
       type="button"
     >

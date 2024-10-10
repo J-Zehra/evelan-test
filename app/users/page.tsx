@@ -1,18 +1,10 @@
-"use client";
+import UsersPage from "./_components/usersPage";
 
-import styles from "./styles.module.css";
-import Users from "./_components/users";
-import useFetchUsers from "../_hooks/useFetchUsers";
-import LoadMore from "./_components/loadMore";
+const BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-export default function UsersPage() {
-  const { users, page, loading, handleLoadMore } = useFetchUsers();
+export default async function Page() {
+  const data = await fetch(`${BASE}/api/users?page=1`);
+  const initialUsers = (await data.json()).data as UserType[];
 
-  return (
-    <section className={styles.container}>
-      <header className={styles.header}>Users</header>
-      <Users users={users} />
-      <LoadMore page={page} loading={loading} handleLoadMore={handleLoadMore} />
-    </section>
-  );
+  return <UsersPage initialUsers={initialUsers} />;
 }
