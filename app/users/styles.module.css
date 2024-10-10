@@ -41,6 +41,28 @@
   width: 15rem;
 }
 
+.card_loading {
+  width: 15rem;
+  background: #3b3b3b;
+  height: 15rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    background-color: #3b3b3b;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #3d3d3d; /* Slightly darker gray */
+  }
+  100% {
+    transform: scale(1);
+    background-color: #3e3e3e;
+  }
+}
+
 .avatar {
   width: 5rem;
   height: 5rem;
